@@ -1,7 +1,7 @@
 # FuzzyDict
 
 Fast Fuzzy String matching dictionary. Based on `Simple and Efficient Algorithm
-for Approximate Dictionary Matching` by `Naoaki Okazaki` and `Jun’ichi Tsujii`
+for Approximate Dictionary Matching` by `Naoaki Okazaki` and `Jun’ichi Tsujii` [1].
 
 ## Usage
 
@@ -14,10 +14,10 @@ for Approximate Dictionary Matching` by `Naoaki Okazaki` and `Jun’ichi Tsujii`
 
 
     fuzzyHash.get("Barack", 1.0, Cosine)
-    // Some(List(ID3))
+    // Some(List("ID3"))
 
     fuzzyHash.getMatches("Barack", 0.5, Cosine)
-    // Some(List((Barack,ID3), (Barack O,ID2), (Barack Obama,ID1)))
+    // Some(List(("Barack", "ID3"), ("Barack O", "ID2"), ("Barack Obama", "ID1")))
 ```
 
  - Fuzzy Matches: 
@@ -28,8 +28,8 @@ for Approximate Dictionary Matching` by `Naoaki Okazaki` and `Jun’ichi Tsujii`
 
 ## When to Use?
  
- - Finding fuzzy matches against the strings which the map is built on is very fast. So this is useful in scenarios when you have a massive lots of Strings which you want to constantly query using Fuzzy Search
-
+ Finding fuzzy matches among the items in the hash is very fast.
+ This is useful in scenarios when you have a massive number of Strings which you want to constantly query using Fuzzy Search.
 
 
 [1] http://www.aclweb.org/anthology/C10-1096
