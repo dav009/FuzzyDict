@@ -15,6 +15,9 @@ for Approximate Dictionary Matching` by `Naoaki Okazaki` and `Jun’ichi Tsujii`
 
     fuzzyHash.get("Barack", 1.0, Cosine)
     // Some(List("ID3"))
+    
+    fuzzyHash.get("Barack", 0.5, Cosine)
+    // Some(List("ID3", "ID2", "ID1"))
 
     fuzzyHash.getMatches("Barack", 0.5, Cosine)
     // Some(List(("Barack", "ID3"), ("Barack O", "ID2"), ("Barack Obama", "ID1")))
