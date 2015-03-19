@@ -4,9 +4,9 @@ import com.github.dav009.utils.Ngram
 
  class SimString(val words:Vector[String]){
 
-  val wordsToIndex = words.zipWithIndex.toMap
+  private val wordsToIndex = words.zipWithIndex.toMap
 
-  val ngramSizeWordTriples = words.map(getFeature(_)).zipWithIndex.flatMap{
+  private val ngramSizeWordTriples = words.map(getFeature(_)).zipWithIndex.flatMap{
     case (ngrams:List[String], wordIndex:Int) =>
          ngrams.map{
             ngram =>
@@ -14,7 +14,7 @@ import com.github.dav009.utils.Ngram
          }
   }
 
-  val lookupTable = ngramSizeWordTriples.map{
+  private val lookupTable = ngramSizeWordTriples.map{
      triple =>
        // ngram_size => wordIndex
        (triple._1 + "_" + triple._2, triple._3)
@@ -58,7 +58,7 @@ import com.github.dav009.utils.Ngram
     matches
    }
 
-  def search(query:String, threshold:Double)(implicit measure:Measure) = {
+  def search(query:String, threshold:Double,  measure:Measure) = {
     val features = getFeature(query)
 
     val matchesSize = Range(measure.min(threshold, features.size), measure.max(threshold, features.size) + 1)
